@@ -35,12 +35,4 @@ public class Step1Tasklet implements Tasklet {
 		return RepeatStatus.FINISHED;
 	}
 
-	public void setDataBaseBean(DataBaseBean dataBaseBean) {
-		this.dataBaseBean = dataBaseBean;
-	}
-
-	public void setMemoryBean(MemoryBean memoryBean) {
-		this.memoryBean = memoryBean;
-	}
-
 }
