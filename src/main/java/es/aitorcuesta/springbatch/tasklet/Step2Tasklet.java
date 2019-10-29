@@ -30,8 +30,4 @@ public class Step2Tasklet implements Tasklet {
 		return null != item ? RepeatStatus.CONTINUABLE : RepeatStatus.FINISHED;
 	}
 
-	public void setMemoryBean(MemoryBean memoryBean) {
-		this.memoryBean = memoryBean;
-	}
-
 }
