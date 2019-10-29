@@ -21,12 +21,13 @@ public class Step2Tasklet implements Tasklet {
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		for (InputDataBaseItem item : memoryBean.getItems()) {
+		InputDataBaseItem item = memoryBean.getNext();
+		if (null != item) {
 			logger.info("Step2Tasklet -  Processing... " + item.toString());
 			Thread.sleep(2000);
 			logger.info("Step2Tasklet -  " + item.toString() + " ...processed");
 		}
-		return RepeatStatus.FINISHED;
+		return null != item ? RepeatStatus.CONTINUABLE : RepeatStatus.FINISHED;
 	}
 
 	public void setMemoryBean(MemoryBean memoryBean) {

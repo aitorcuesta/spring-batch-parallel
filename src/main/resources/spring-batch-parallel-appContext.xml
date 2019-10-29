@@ -24,13 +24,18 @@
 		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
+	
+	<bean id="simpleTaskExecutor"
+		class="org.springframework.core.task.SimpleAsyncTaskExecutor">
+		<property name="concurrencyLimit" value="5" />
+	</bean>
 
 	<batch:job id="aitorcuestaSpringBatchJob">
 		<batch:step id="step1" next="step2">
 			<batch:tasklet ref="step1Tasklet" />
 		</batch:step>
 		<batch:step id="step2" next="step3">
-			<batch:tasklet ref="step2Tasklet" />
+			<batch:tasklet task-executor="simpleTaskExecutor" throttle-limit="5" ref="step2Tasklet" />
 		</batch:step>
 		<batch:step id="step3">
 			<batch:tasklet ref="step3Tasklet" />
