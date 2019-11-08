@@ -50,10 +50,10 @@ public class App {
 			logger.error(e, e);
 		}
 
-		System.out.println("----------- AFTER JOB ---------");
+		logger.info("----------- AFTER JOB ---------");
 		logger.info("DataBaseBean stores " + dataBaseBean.getElements() + " items");
 		logger.info("MemoryBean stores " + memoryBean.getElements() + " items");
-		System.out.println("----------- AFTER JOB ---------");
+		logger.info("----------- AFTER JOB ---------");
 
 	}
 
